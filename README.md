@@ -1,4 +1,4 @@
-# PHP 8.3 fpm
+# Symfony 7 com php 8.3 fpm
 
 Ambiente docker para se trabalhar com terminal ZSH, php 8.3 fpm, composer, symfony CLI e nodejs com npm.
 
