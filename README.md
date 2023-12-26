@@ -85,13 +85,18 @@ symfony
 
 ## Iniciando servidor
 
-Para iniciar o servidor, utilize o comando abaixo:
+Para iniciar o servidor do Symfony dentro do container execute:
+
+```bash
+docker exec -it php-fpm zsh
+```
+
+e após isso execute:
 
 ```bash
 symfony server:start -d
 ```
 
-## Acessando no navegador
+### Acessando no navegador
 
-Temos um exemplo de `index.php` com um `phpinfo()` para testar o ambiente.
-Acesse url: `http://localhost:8888`.
+Para acessar abra seu navegador no endereço `http://localhost:8888`.
