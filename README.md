@@ -30,7 +30,7 @@ Recomendo ter em seu ambiente:
 Copie os arquivos necessários para a raiz do projeto:
 
 ```bash
-cp _docker/local/php-fpm/.zshrc . && touch .zsh_history && cp _docker/local/php-fpm/docker-compose.yml .
+cp _docker/local/php-fpm/.zshrc . && touch .zsh_history && cp _docker/local/docker-compose.yml .
 ```
 
 Utilize o comando abaixo para iniciar o container:
