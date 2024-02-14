@@ -1,9 +1,9 @@
 version: '3.9'
 
 services:
-  php-fpm:
-    container_name: php-fpm
-    image: marcelofabianov/php8.3-fpm:latest
+  app:
+    container_name: app
+    image: exc02/php8.3-fpm-symfony:latest
     build:
       context: ./_docker/local/php-fpm
       dockerfile: Dockerfile
@@ -13,12 +13,31 @@ services:
       - ./.zshrc:/home/dev/.zshrc
       - ./.zsh_history:/home/dev/.zsh_history
     ports:
-      - "9000:9000"
-      - "9003:9003"
-      - "8888:8000"
+      - "8881:8000"
     networks:
-      - php_network
+      - app_network
+    depends_on:
+      - database
+
+  database:
+    container_name: app_db
+    image: 'postgres:15-alpine'
+    ports:
+      - '5555:5432'
+    environment:
+      PGPASSWORD: '${DB_PASSWORD:-secret}'
+      POSTGRES_DB: '${DB_DATABASE:-db}'
+      POSTGRES_USER: '${DB_USERNAME:-user}'
+      POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+    volumes:
+      - 'app_db:/var/lib/postgresql/data:rw'
+    networks:
+      - app_network
+
+volumes:
+  app_db:
+    driver: local
 
 networks:
-  php_network:
+  app_network:
     driver: bridge

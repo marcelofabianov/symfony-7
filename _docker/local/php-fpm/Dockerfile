@@ -13,6 +13,7 @@ RUN apt-get update -yqq && \
   curl \
   unzip \
   nano \
+  tree \
   vim \
   zsh \
   openssl \
@@ -59,8 +60,9 @@ RUN pecl install \
 
 COPY php.ini /usr/local/etc/php/
 
-RUN groupadd -g 1000 dev && \
-  useradd -m -u 1000 -g dev -s $(which zsh) dev && \
+# verifique qual id do grupo e do usuário do seu sistema para atualizar aqui
+RUN groupadd -g 1001 dev && \
+  useradd -m -u 1001 -g dev -s $(which zsh) dev && \
   usermod -a -G www-data dev
 
 RUN curl -L -C - --progress-bar -o /usr/local/bin/composer https://getcomposer.org/composer.phar && \

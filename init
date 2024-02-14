@@ -1,0 +1,1 @@
+cp _docker/local/php-fpm/.zshrc . && touch .zsh_history && cp _docker/local/docker-compose.yml .
